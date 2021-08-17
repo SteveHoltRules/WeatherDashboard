@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="/assets/css/sidebars.css">
-  <link rel="stylesheet" href="/assets/css/pricing.css">
+  <link rel="stylesheet" href="assets/css/sidebars.css">
+  <link rel="stylesheet" href="assets/css/pricing.css">
 
   <title>Weather Dashboard</title>
 </head>
@@ -109,7 +109,8 @@
           </a>
           <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-              <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+              <input type="search" class="form-control mb-3" placeholder="Search..." aria-label="Search">
+              <button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <li class="nav-item">
               <a href="#" class="nav-link align-middle px-0">
@@ -191,7 +192,7 @@
         <div class="container-fluid">
           <header class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
             <a class="d-flex align-items-left text-dark text-decoration-none">
-              <img style="width:50px" src="assets/1513968497.svg" alt="cloud">
+              <img class="icon4" src="assets/1513968497.svg" alt="cloud">
               <span class="fs-4"></span>
             </a>
 
@@ -204,18 +205,22 @@
 
         <!-- Pricing Header -->
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-          <h1 class="display-4 fw-normal">Pricing</h1>
-          <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this
-            Bootstrap
-            example. It’s built with default Bootstrap components and utilities with little customization.</p>
+          <h1 class="display-4 fw-normal">Dallas</h1>
+          <ul>
+            <li class="list-group-item">Temp:</li>
+            <li class="list-group-item">Wind:</li>
+            <li class="list-group-item">Humidity:</li>
+            <li class="list-group-item">UV Index:</li>
+          </ul>
         </div>
 
         <!-- Cards Section -->
+        <h3>5-Day Forecast</h3>
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
           <div class="col">
             <div class="card mb-3 rounded-3 shadow-sm">
               <div class="card-header py-3">
-                <h4 class="my-0 fw-normal">Free</h4>
+                <h4 class="my-0 fw-normal">08/16/2021</h4>
               </div>
               <div class="card-body">
                 <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
@@ -312,9 +317,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-  <script src="assets/script.js"></script>
-  <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="sidebars.js"></script>
+  <script src="assets/scripts/script.js"></script>
+  <script src="assets/scripts/sidebars.js"></script>
 
 </body>
 

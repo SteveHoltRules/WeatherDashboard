@@ -1,5 +1,5 @@
 var getWeather = function () {
-  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=dallas,texas&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
+  var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=dallas,texas&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
   console.log(apiUrl);
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -19,7 +19,7 @@ var getWeather = function () {
 
 getWeather();
 
-var weatherDashBoard = function () {
+var weatherboardDates = function () {
 
   var curDate = moment().format('L');
   var datePlus1 = moment().add(1, 'd').format('L');
@@ -36,7 +36,48 @@ var weatherDashBoard = function () {
 
 };
 
-weatherDashBoard();
+weatherboardDates();
+
+var mainWeather = function () {
+  var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=dallas,texas&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
+  console.log(apiUrl);
+  fetch(apiUrl).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        var tempMain = data.main.temp;
+        $(".temp").append(tempMain);
+        console.log(tempMain);
+        var wind = data.wind.speed;
+        $(".wind").append(wind);
+        var humid = data.main.humidity;
+        $(".humid").append(humid);
+
+        var longitude = data.coord.lon;
+        var latitude = data.coord.lat;
+
+        var uvApi= `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=cc7ed6f786635293096d197e16858884`;
+        fetch(uvApi).then(function(response) {
+          if(response.ok) {
+            response.json().then(function(data) {
+              console.log(data);
+              var uvIndex = data.current.uvi;
+              console.log(uvIndex);
+              $(".uvIndex").append(uvIndex);
+            })
+          }
+        })
+      });
+    } else {
+    alert("Error: IEX quote is not found");
+  }
+})
+    .catch(function (error) {
+    //notice this catch getting changed out to the end of the .then()
+    alert("Unable to connect to IEX");
+  });
+};
+
+mainWeather();
 
 var calledWeather = function () {
   var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=dallas,texas&units=imperial&appid=cc7ed6f786635293096d197e16858884`;

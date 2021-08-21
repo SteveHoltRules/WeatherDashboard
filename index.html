@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/sidebars.css">
   <link rel="stylesheet" href="assets/css/pricing.css">
 
@@ -109,8 +110,8 @@
           </a>
           <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-              <input type="search" class="form-control mb-3" placeholder="City, State" aria-label="Search">
-              <button class="form-control btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <input type="search" class="form-control mb-3" id="searchCityState" placeholder="City, State" aria-label="Search">
+              <button class="form-control btn btn-outline-success my-2 my-sm-0" id="searchSubmit" type="button">Search</button>
             </form>
             <li class="nav-item">
               <a href="#" class="nav-link align-middle px-0">
@@ -203,14 +204,14 @@
         </div>
         </header>
 
-        <!-- Pricing Header -->
-        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-          <h1 class="display-4 fw-normal">Dallas</h1>
+        <!-- Dashboard Header -->
+        <div class="pricing-header mx-auto">
+          <h1 class="display-4 fw-bold text-center" id="searchCity" type="text">Dallas</h1>
           <ul>
-            <li class="list-group-item">Temp: <span class="temp"></span></li>
-            <li class="list-group-item">Wind: <span class="wind"></span></li>
-            <li class="list-group-item">Humidity: <span class="humid"></span></li>
-            <li class="list-group-item">UV Index: <span class="uvIndex"></span></li>
+            <li class="list-group-item pl-5">Temp: <span class="temp"></span></li>
+            <li class="list-group-item pl-5">Wind: <span class="wind"></span></li>
+            <li class="list-group-item pl-5">Humidity: <span class="humid"></span></li>
+            <li class="list-group-item pl-5">UV Index: <span class="uvIndex"></span></li>
           </ul>
         </div>
 

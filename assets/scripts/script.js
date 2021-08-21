@@ -134,5 +134,37 @@ var calledWeather = function () {
 
 calledWeather();
 
+// $(document).click("#searchSubmit", function() {
+//   var searchIn = $("#searchCityState").val();
+//   console.log(searchIn);
+//   localStorage.setItem("#searchCity", searchIn);
 
+//   const searchCity = document.getElementsByClassName("searchCity");
+//   document.getElementsByClassName("searchCity").innerHTML = "Houston";
+// });
 
+var searchSubmit = function() {
+  document.getElementById("searchCity").innerHTML = "Houston";
+  console.log("Houston");
+};
+
+// $(document).click("#searchSubmit", function() {
+//   document.getElementById("searchCity").innerHTML = "Houston";
+//   console.log("Houston");
+// });
+
+$(document).click("#searchSubmit", function () {
+  var searchIn = $("#searchCityState").val();
+  console.log(searchIn);
+  localStorage.setItem("#searchCity", searchIn);
+  console.log("Houston");
+  document.getElementById("searchCity").innerHTML = searchIn;
+});
+
+//next steps - create the logic to split the city from the state
+  //find the comma or the space, if there is neither, throw an error
+  //If there is a comma, find the length, and extract all the text prior to the comma
+  //If there is a comma and a space, find the space, and delete it and pass the remainder to the city
+  //There is error handling on the api call which will reject it if it is not valid.
+//In the header, only display the city name
+//Pass the city and the state into the api

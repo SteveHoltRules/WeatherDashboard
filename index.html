@@ -113,7 +113,7 @@
               <input type="search" class="form-control mb-3" id="searchCityState" placeholder="City, State" aria-label="Search">
               <button class="form-control btn btn-outline-success my-2 my-sm-0" id="searchSubmit" type="button">Search</button>
             </form>
-            <li class="nav-item">
+            <li type="button" class="nav-item btn btn-primary">
               <a href="#" class="nav-link align-middle px-0">
                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dallas</span>
               </a>
@@ -131,11 +131,11 @@
               </ul>
             </li>
             <li>
-              <a href="#" class="nav-link px-0 align-middle">
+              <a href="#" class="nav-link px-0 align-middle btn btn-primary">
                 <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">El Paso</span></a>
             </li>
             <li>
-              <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <a href="#submenu2" data-bs-toggle="collapse" class="btn btn-primary nav-link px-0 align-middle ">
                 <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Oklahoma City</span></a>
               <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                 <li class="w-100">
@@ -208,98 +208,89 @@
         <div class="pricing-header mx-auto">
           <h1 class="display-4 fw-bold text-center" id="searchCity" type="text">Dallas</h1>
           <ul>
-            <li class="list-group-item pl-5">Temp: <span class="temp"></span></li>
-            <li class="list-group-item pl-5">Wind: <span class="wind"></span></li>
-            <li class="list-group-item pl-5">Humidity: <span class="humid"></span></li>
+            <li class="list-group-item pl-5">Today's Date: <span class="tdate"></span></li>
+            <li class="list-group-item pl-5">Temp: <span class="temp0"></span></li>
+            <li class="list-group-item pl-5">Wind: <span class="wind0"></span></li>
+            <li class="list-group-item pl-5">Humidity: <span class="humid0"></span></li>
             <li class="list-group-item pl-5">UV Index: <span class="uvIndex"></span></li>
           </ul>
         </div>
 
         <!-- Cards Section -->
         <h3>5-Day Forecast</h3>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-          <div class="col">
+        <div class="row row-cols-1 row-cols-md-8 mb-3 text-center">
+          <div class="col-sm">
             <div class="card mb-3 rounded-3 shadow-sm">
               <div class="card-header py-3">
                 <h4 class="my-0 fw-normal tile1"></h4>
               </div>
               <div class="card-body">
-                <h1 class="card-title pricing-card-title"><img class="wicon0" src=""></h1>
+                <h1 class="card-title pricing-card-title"><img class="wicon1" src=""></h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                  <li>10 users included</li>
-                  <li>2 GB of storage</li>
-                  <li>Email support</li>
-                  <li>Help center access</li>
+                  <li>Temp: <span class="temp1"></span></li>
+                  <li>Wind: <span class="wind1"></span></li>
+                  <li>Humidity: <span class="humid1"></span></li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-sm">
             <div class="card mb-3 rounded-3 shadow-sm">
               <div class="card-header py-3">
                 <h4 class="my-0 fw-normal tile2"></h4>
               </div>
               <div class="card-body">
-                <h1 class="card-title pricing-card-title"><img class="wicon1" src=""></h1>
+                <h1 class="card-title pricing-card-title"><img class="wicon2" src=""></h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                  <li>20 users included</li>
-                  <li>10 GB of storage</li>
-                  <li>Priority email support</li>
-                  <li>Help center access</li>
+                  <li>Temp: <span class="temp2"></span></li>
+                  <li>Wind: <span class="wind2"></span></li>
+                  <li>Humidity: <span class="humid2"></span></li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-sm">
             <div class="card mb-3 rounded-3 shadow-sm border-primary">
               <div class="card-header py-3 text-white bg-primary border-primary">
                 <h4 class="my-0 fw-normal tile3"></h4>
               </div>
               <div class="card-body">
-                <h1 class="card-title pricing-card-title"><img class="wicon2" src=""></h1>
+                <h1 class="card-title pricing-card-title"><img class="wicon3" src=""></h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                  <li>30 users included</li>
-                  <li>15 GB of storage</li>
-                  <li>Phone and email support</li>
-                  <li>Help center access</li>
+                  <li>Temp: <span class="temp3"></span></li>
+                  <li>Wind: <span class="wind3"></span></li>
+                  <li>Humidity: <span class="humid3"></span></li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-sm">
             <div class="card mb-3 rounded-3 shadow-sm border-primary">
               <div class="card-header py-3 text-white bg-primary border-primary">
                 <h4 class="my-0 fw-normal tile4"></h4>
               </div>
               <div class="card-body">
-                <h1 class="card-title pricing-card-title"><img class="wicon3" src=""></h1>
+                <h1 class="card-title pricing-card-title"><img class="wicon4" src=""></h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                  <li>30 users included</li>
-                  <li>15 GB of storage</li>
-                  <li>Phone and email support</li>
-                  <li>Help center access</li>
+                  <li>Temp: <span class="temp4"></span></li>
+                  <li>Wind: <span class="wind4"></span></li>
+                  <li>Humidity: <span class="humid4"></span></li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-sm">
             <div class="card mb-3 rounded-3 shadow-sm border-primary">
               <div class="card-header py-3 text-white bg-primary border-primary">
                 <h4 class="my-0 fw-normal tile5"></h4>
               </div>
               <div class="card-body">
-                <h1 class="card-title pricing-card-title"><img class="wicon4" src=""></h1>
+                <h1 class="card-title pricing-card-title"><img class="wicon5" src=""></h1>
                 <ul class="list-unstyled mt-3 mb-4">
-                  <li>30 users included</li>
-                  <li>15 GB of storage</li>
-                  <li>Phone and email support</li>
-                  <li>Help center access</li>
+                  <li>Temp: <span class="temp5"></span></li>
+                  <li>Wind: <span class="wind5"></span></li>
+                  <li>Humidity: <span class="humid5"></span></li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
               </div>
             </div>
           </div>

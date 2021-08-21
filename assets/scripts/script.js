@@ -38,8 +38,8 @@ var weatherboardDates = function () {
 
 weatherboardDates();
 
-var mainWeather = function () {
-  var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=dallas,texas&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
+var mainWeather = function (city, state) {
+  var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
   console.log(apiUrl);
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -77,10 +77,10 @@ var mainWeather = function () {
   });
 };
 
-mainWeather();
+mainWeather("Dallas","Texas");
 
-var calledWeather = function () {
-  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=dallas,texas&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
+var calledWeather = function (city, state) {
+  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${state}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
 
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -132,7 +132,7 @@ var calledWeather = function () {
     });
 };
 
-calledWeather();
+calledWeather("Dallas","Texas");
 
 // $(document).click("#searchSubmit", function() {
 //   var searchIn = $("#searchCityState").val();
@@ -153,18 +153,23 @@ var searchSubmit = function() {
 //   console.log("Houston");
 // });
 
-$(document).click("#searchSubmit", function () {
+$("#searchSubmit").click(function () {
   var searchIn = $("#searchCityState").val();
   console.log(searchIn);
+  var city=searchIn.split(', ');
+  console.log(city[0]);
+  console.log(city[1]);
   localStorage.setItem("#searchCity", searchIn);
-  console.log("Houston");
-  document.getElementById("searchCity").innerHTML = searchIn;
+  document.getElementById("searchCity").innerHTML = city[0];
+  mainWeather(city[0],city[1]);
+  calledWeather(city[0], city[1]);
+  document.getElementById("#searchCity").value='';
 });
 
-//next steps - create the logic to split the city from the state
-  //find the comma or the space, if there is neither, throw an error
-  //If there is a comma, find the length, and extract all the text prior to the comma
+//next steps - create the logic to split the city from the state - done
+//There is a problem with the click function - it is not clearing
   //If there is a comma and a space, find the space, and delete it and pass the remainder to the city
+  //How do I clear out the prior information? 
   //There is error handling on the api call which will reject it if it is not valid.
-//In the header, only display the city name
-//Pass the city and the state into the api
+//Pass the city and the state into the api - Done
+//Need to clean-up and display more information on the 5 day forecast

@@ -143,14 +143,15 @@ var calledWeather = function (city, state) {
     console.log("In fetch of calledWeather");
     if (response.ok) {
       response.json().then(function (data) {
-        console.log(data);
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < 5; i++) {
           console.log("In loop of calledWeather");
           j = ((8 * i) + 4);
+          console.log("Select the array of weather");
           console.log(j);
           k= i+1;
-          console.log(i);
+          console.log(data);
           var wicon = data.list[j].weather[0].icon;
+          console.log("Weather Icon");
           console.log(wicon);
           var iconApi = '';
           iconApi = `http://openweathermap.org/img/wn/${wicon}@2x.png`;

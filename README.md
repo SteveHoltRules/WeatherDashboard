@@ -20,3 +20,5 @@ During this project I learned more about the details of arranging a bootstrap fi
 ### Items Left to Address
 1. Use more local storage functionality - Allow the user to select the top 5 cities of keep on the daskboard.
 2. Set the Forecast API to use a time of day (noon for example) instead of pre-selecting the data-streams (in this case, the 4 stream, and every 8 after that for the same time period the following day). 
+
+![image](https://user-images.githubusercontent.com/78341753/130368531-bd2c18f3-bf66-4a6a-9ff2-f5d80b0001a9.png)

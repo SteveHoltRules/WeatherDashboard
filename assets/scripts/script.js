@@ -219,4 +219,6 @@ $("#searchSubmit").click(function () {
   //There is error handling on the api call which will reject it if it is not valid.
 //Pass the city and the state into the api - Done
 //Need to clean-up and display more information on the 5 day forecast
-//Make the links clickable
+//Make the links clickable - still left to do 
+  //to make them clickable, I guess an event listener for these specific locations? (hardcoded to these locations - this shouldn't take too long, then turn it in.
+  //It won't have the local storage, but it is good enough for now. 

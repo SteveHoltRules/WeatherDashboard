@@ -17,6 +17,6 @@ During this project I learned more about the details of arranging a bootstrap fi
 12. Clean-up and display more information on the 5 day forecast
 13. Make the static links function 
  
-###Items Left to Address
+### Items Left to Address
 1. Use more local storage functionality - Allow the user to select the top 5 cities of keep on the daskboard.
 2. Set the Forecast API to use a time of day (noon for example) instead of pre-selecting the data-streams (in this case, the 4 stream, and every 8 after that for the same time period the following day). 

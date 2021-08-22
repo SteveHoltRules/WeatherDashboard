@@ -81,61 +81,6 @@ var mainWeather = function (city, state) {
 
 mainWeather("Dallas", "Texas");
 
-// var calledWeather = function (city, state) {
-//   var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${state}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
-//   fetch(apiUrl).then(function (response) {
-//     if (response.ok) {
-//       response.json().then(function (data) {
-//         console.log(data);
-//         var wicon = data.list[4].weather[0].icon;
-//         console.log(wicon);
-//         var iconApi = '';
-//         iconApi = `http://openweathermap.org/img/wn/${wicon}@2x.png`;
-//         console.log(iconApi);
-//         $(".wicon0").attr('src', iconApi);
-
-//         var wicon1 = data.list[12].weather[0].icon;
-//         console.log(wicon1);
-//         var iconApi1 = '';
-//         iconApi1 = `http://openweathermap.org/img/wn/${wicon1}@2x.png`;
-//         console.log(iconApi1);
-//         $(".wicon1").attr('src', iconApi1);
-
-//         var wicon2 = data.list[20].weather[0].icon;
-//         console.log(wicon2);
-//         var iconApi2 = '';
-//         iconApi2 = `http://openweathermap.org/img/wn/${wicon2}@2x.png`;
-//         console.log(iconApi2);
-//         $(".wicon2").attr('src', iconApi2);
-
-//         var wicon3 = data.list[28].weather[0].icon;
-//         console.log(wicon3);
-//         var iconApi3 = '';
-//         iconApi3 = `http://openweathermap.org/img/wn/${wicon3}@2x.png`;
-//         console.log(iconApi);
-//         $(".wicon3").attr('src', iconApi3);
-
-//         var wicon4 = data.list[36].weather[0].icon;
-//         console.log(wicon4);
-//         var iconApi = '';
-//         iconApi4 = `http://openweathermap.org/img/wn/${wicon4}@2x.png`;
-//         console.log(iconApi4);
-//         $(".wicon4").attr('src', iconApi4);
-
-
-//       });
-//     } else {
-//       alert("Error: IEX quote is not found");
-//     }
-//   })
-//     .catch(function (error) {
-//       //notice this catch getting changed out to the end of the .then()
-//       alert("Unable to connect to IEX");
-//     });
-// };
-
-// calledWeather("Dallas", "Texas");
-
 var calledWeather = function (city, state) {
   var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${state}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
 
@@ -209,7 +154,36 @@ $("#searchSubmit").click(function () {
   document.getElementById("searchCity").innerHTML = city[0];
   mainWeather(city[0], city[1]);
   calledWeather(city[0], city[1]);
-  document.getElementById("#searchCity").value = '';
+});
+
+$("#btnDallas").click(function () {
+  document.getElementById("searchCity").innerHTML = "Dallas";
+  mainWeather("Dallas", "Texas");
+  calledWeather("Dallas", "Texas");
+});
+
+$("#btnElPaso").click(function () {
+  document.getElementById("searchCity").innerHTML = "El Paso";
+  mainWeather("El Paso", "Texas");
+  calledWeather("El Paso", "Texas");
+});
+
+$("#btnAustin").click(function () {
+  document.getElementById("searchCity").innerHTML = "Austin";
+  mainWeather("Austin", "Texas");
+  calledWeather("Austin", "Texas");
+});
+
+$("#btnMarfa").click(function () {
+  document.getElementById("searchCity").innerHTML = "Marfa";
+  mainWeather("Marfa", "Texas");
+  calledWeather("Marfa", "Texas");
+});
+
+$("#btnCorpus").click(function () {
+  document.getElementById("searchCity").innerHTML = "Corpus";
+  mainWeather("Corpus Christi", "Texas");
+  calledWeather("Corpus Christi", "Texas");
 });
 
 //next steps - create the logic to split the city from the state - done

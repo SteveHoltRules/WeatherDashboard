@@ -144,26 +144,35 @@ var places = function (city) {
 }
 
 console.log(btnArray);
-//the local storage function declares the key and can attribute values to the key in the same step
-var cityBtn = localStorage.setItem('history', btnArray);
-console.log(cityBtn);
+
+// var cityBtn = localStorage.setItem('history', btnArray);
 
 //this is taking the history and should split the city and state and return the city to the button
 //Instead, this function is taking the JSON and treating every character as a item in the array. How can it be treated as a group on the parse
 //instead of individual characters?
 var postSearch = function () {
-  var cityStoreStr = JSON.parse(localStorage.getItem('history'));
+  //parse only returns the value, and there is not key
+  //how do I make the citystorestr as an array?
+
+  var cityStoreStr = [];
+  var cityHist = JSON.parse(localStorage.getItem('history')) || [];
+  console.log(cityHist);
+  for (var i = 0; i < cityHist.length; i++) {
+    console.log("In first loop of postSearch");
+    cityStoreStr.push(cityHist[i]);
+  }
   console.log(cityStoreStr);
   for (var i = 0; i < cityStoreStr.length; i++) {
-    console.log("in loop of postSearch");
+    console.log("In second loop of postSearch");
     var searchIn = cityStoreStr[i];
     console.log(searchIn);
     var city = searchIn.split(', ');
+    document.getElementById(`btn${i}`).innerHTML = "";
     document.getElementById(`btn${i}`).innerHTML = city[0];
   }
 };
 
-$("#searchSubmit").click(function() {
+$("#searchSubmit").click(function () {
   var searchIn = $("#searchCityState").val();
   console.log(searchIn);
   var city = searchIn.split(', ');
@@ -171,21 +180,18 @@ $("#searchSubmit").click(function() {
   localStorage.setItem("#searchCity", searchIn);
   document.getElementById("searchCity").innerHTML = city[0];
   mainWeather(city[0], city[1]);
-  calledWeather(city[0], city[1])
-  postSearch();
+  calledWeather(city[0], city[1]);
 });
 
-// $("#btnDallas").click(function () {
-//   document.getElementById("searchCity").innerHTML = "Dallas";
-//   mainWeather("Dallas", "Texas");
-//   calledWeather("Dallas", "Texas");
-// });
+// $("#btn0").click(postSearch());
 
-// $("#btnElPaso").click(function () {
-//   document.getElementById("searchCity").innerHTML = "El Paso";
-//   mainWeather("El Paso", "Texas");
-//   calledWeather("El Paso", "Texas");
-// });
+$("#btn1").click(function () {
+  document.getElementById("searchCity").innerHTML = "El Paso";
+  // var city = searchHistory.split(', ');
+  // document.getElementById("searchCity").innerHTML = city[0];
+  mainWeather("El Paso", "Texas");
+  calledWeather("El Paso", "Texas");
+});
 
 // $("#btnAustin").click(function () {
 //   document.getElementById("searchCity").innerHTML = "Austin";

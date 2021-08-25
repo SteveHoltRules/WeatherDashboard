@@ -27,7 +27,7 @@ var mainWeather = function (city, state) {
       response.json().then(function (data) {
         var tempMain = data.main.temp;
         $(`.temp0`).empty().append(tempMain);
-        console.log(tempMain);
+        // console.log(tempMain);
         var wind = data.wind.speed;
         $(".wind0").empty().append(wind);
         var humid = data.main.humidity;
@@ -40,26 +40,20 @@ var mainWeather = function (city, state) {
         fetch(uvApi).then(function (response) {
           if (response.ok) {
             response.json().then(function (data) {
-              console.log(data);
+              // console.log(data);
               var uvIndex = data.current.uvi;
-              console.log(uvIndex);
-              if(uvIndex < 3) {
-                $(".uvIndex").empty().append(uvIndex)
-                $(".uvIndex").addClass("rounded bg-success");
-              } else if (uvIndex < 6) {
-                $(".uvIndex").empty().append(uvIndex)
-                $(".uvIndex").addClass("rounded bg-warning");
-              } else if (uvIndex < 8) {
-                $(".uvIndex").empty().append(uvIndex)
-                $(".uvIndex").attr("style", "background-color: orange");
-                $(".uvIndex").addClass("rounded");
-              } else if (uvIndex < 11) {
-                $(".uvIndex").empty().append(uvIndex)
-                $(".uvIndex").addClass("rounded bg-danger");
+              console.log(typeof uvIndex);
+              
+              if(uvIndex < 3.00) {
+                $(".uvIndex").empty().addClass("uvIndex rounded bg-success").append(uvIndex);
+              } else if (uvIndex < 6.00) {
+                $(".uvIndex").empty().addClass("uvIndex rounded bg-warning").append(uvIndex);
+              } else if (uvIndex < 8.00) {
+                $(".uvIndex").empty().addClass("uvIndex rounded").append(uvIndex).attr("style", "background-color: orange");
+              } else if (uvIndex < 11.00) {
+                $(".uvIndex").empty().addClass("uvIndex rounded bg-danger").append(uvIndex);
               } else {
-                $(".uvIndex").empty().append(uvIndex)
-                $(".uvIndex").addClass("rounded");
-                $(".uvIndex").attr("style", "background-color: violet");
+                $(".uvIndex").empty().addClass("uvIndex rounded").append(uvIndex).attr("style", "background-color: violet");
               }
               var mwicon = data.current.weather[0].icon;
               var iconApi = `http://openweathermap.org/img/wn/${mwicon}@2x.png`;
@@ -89,25 +83,23 @@ var calledWeather = function (city, state) {
         for (var i = 0; i < 5; i++) {
           console.log("In loop of calledWeather");
           j = ((8 * i) + 4);
-          console.log("Select the array of weather");
-          console.log(j);
+          // console.log("Select the array of weather");
+          // console.log(j);
           k= i+1;
-          console.log(data);
           var wicon = data.list[j].weather[0].icon;
-          console.log("Weather Icon");
-          console.log(wicon);
+          // console.log("Weather Icon");
+          // console.log(wicon);
           var iconApi = '';
           iconApi = `http://openweathermap.org/img/wn/${wicon}@2x.png`;
-          console.log(iconApi);
           $(`.wicon${k}`).attr('src', iconApi);
           var temp = data.list[j].main.temp
-          console.log(temp);
+          // console.log(temp);
           $(`.temp${k}`).empty().append(temp);
           var wind = data.list[j].wind.speed;
-          console.log(wind);
+          // console.log(wind);
           $(`.wind${k}`).empty().append(wind);
           var humid = data.list[j].main.humidity;
-          console.log(humid);
+          // console.log(humid);
           $(`.humid${k}`).empty().append(humid);
         };
       });
@@ -141,34 +133,26 @@ var defOrLocal = function(){
 
 defOrLocal();
 
-// $(document).click("#searchSubmit", function() {
-//   var searchIn = $("#searchCityState").val();
-//   console.log(searchIn);
-//   localStorage.setItem("#searchCity", searchIn);
+var btnArray = []
 
-//   const searchCity = document.getElementsByClassName("searchCity");
-//   document.getElementsByClassName("searchCity").innerHTML = "Houston";
-// });
-
-
-// $(document).click("#searchSubmit", function() {
-//   document.getElementById("searchCity").innerHTML = "Houston";
-//   console.log("Houston");
-// });
-
-var arr = []
-
-var places = function () {
-  arr.push('city');
+var places = function (city) {
+  console.log("in places")
+  let savedCity = JSON.stringify(city);
+  btnArray.push(savedCity);
+  console.log(btnArray);
+  localStorage.setItem('history', btnArray);
 }
 
-places()
-  localStorage.setItem('history', arr);
+console.log(btnArray);
+//the local storage function declares the key and can attribute values to the key in the same step
+var cityBtn = localStorage.setItem('history', btnArray);
+console.log(cityBtn);
 
 $("#searchSubmit").click(function () {
   var searchIn = $("#searchCityState").val();
   console.log(searchIn);
   var city = searchIn.split(', ');
+  places(searchIn);
   console.log(city[0]);
   console.log(city[1]);
   localStorage.setItem("#searchCity", searchIn);
@@ -176,10 +160,6 @@ $("#searchSubmit").click(function () {
   mainWeather(city[0], city[1]);
   calledWeather(city[0], city[1]);
 });
-
-
-
-
 
 
 

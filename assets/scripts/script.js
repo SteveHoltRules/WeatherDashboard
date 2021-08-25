@@ -43,7 +43,24 @@ var mainWeather = function (city, state) {
               console.log(data);
               var uvIndex = data.current.uvi;
               console.log(uvIndex);
-              $(".uvIndex").empty().append(uvIndex);
+              if(uvIndex < 3) {
+                $(".uvIndex").empty().append(uvIndex)
+                $(".uvIndex").addClass("rounded bg-success");
+              } else if (uvIndex < 6) {
+                $(".uvIndex").empty().append(uvIndex)
+                $(".uvIndex").addClass("rounded bg-warning");
+              } else if (uvIndex < 8) {
+                $(".uvIndex").empty().append(uvIndex)
+                $(".uvIndex").attr("style", "background-color: orange");
+                $(".uvIndex").addClass("rounded");
+              } else if (uvIndex < 11) {
+                $(".uvIndex").empty().append(uvIndex)
+                $(".uvIndex").addClass("rounded bg-danger");
+              } else {
+                $(".uvIndex").empty().append(uvIndex)
+                $(".uvIndex").addClass("rounded");
+                $(".uvIndex").attr("style", "background-color: violet");
+              }
               var mwicon = data.current.weather[0].icon;
               var iconApi = `http://openweathermap.org/img/wn/${mwicon}@2x.png`;
               console.log(iconApi);

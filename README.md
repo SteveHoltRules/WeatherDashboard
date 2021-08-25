@@ -18,5 +18,7 @@ During this project I learned more about the details of arranging a bootstrap fi
 13. Make the static links function 
  
 ### Items Left to Address
-1. Use more local storage functionality - Allow the user to select the top 5 cities of keep on the daskboard.
-2. Set the Forecast API to use a time of day (noon for example) instead of pre-selecting the data-streams (in this case, the 4 stream, and every 8 after that for the same time period the following day). 
+1. Use more local storage functionality - Allow the user to select the top 5 cities to keep on the dashboard.
+2. This city api call is not working as it should. The parse function doesn't like the search method to use the space and comma. Due to this, the API call will have to be changed, plus the rework of the search functions, and then retry the local storage functionality. 
+3. Set the Forecast API to use a time of day (noon for example) instead of pre-selecting the data-streams (in this case, the 4 stream, and every 8 after that for the same time period the following day). 
+

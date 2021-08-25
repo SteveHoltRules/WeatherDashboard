@@ -19,8 +19,8 @@ var weatherboardDates = function () {
 
 weatherboardDates();
 
-var mainWeather = function (city, state) {
-  var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
+var mainWeather = function (city) {
+  var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
   console.log(apiUrl);
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
@@ -73,8 +73,8 @@ var mainWeather = function (city, state) {
     });
 };
 
-var calledWeather = function (city, state) {
-  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${state}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
+var calledWeather = function (city) {
+  var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
 
   fetch(apiUrl).then(function (response) {
     console.log("In fetch of calledWeather");
@@ -119,10 +119,10 @@ console.log(searchHistory);
 var defOrLocal = function () {
   console.log(searchHistory);
   if (searchHistory) {
-    var city = searchHistory.split(', ');
-    document.getElementById("searchCity").innerHTML = city[0];
-    mainWeather(city[0], city[1]);
-    calledWeather(...city);
+    var city = searchHistory;
+    document.getElementById("searchCity").innerHTML = city;
+    mainWeather(city);
+    calledWeather(city);
     console.log("Search History Exists");
   } else {
     mainWeather("Dallas", "Texas");
@@ -133,12 +133,14 @@ var defOrLocal = function () {
 
 defOrLocal();
 
-var btnArray = []
+var btnArray;
+//I am storing the array into the local storage, but the array cannot be returned
+//because it is not the right type. I have to store a string, and then retrieve the string
 
 var places = function (city) {
   console.log("in places")
   let savedCity = JSON.stringify(city);
-  btnArray.push(savedCity);
+  btnArray.append(savedCity);
   console.log(btnArray);
   localStorage.setItem('history', btnArray);
 }
@@ -147,15 +149,10 @@ console.log(btnArray);
 
 // var cityBtn = localStorage.setItem('history', btnArray);
 
-//this is taking the history and should split the city and state and return the city to the button
-//Instead, this function is taking the JSON and treating every character as a item in the array. How can it be treated as a group on the parse
-//instead of individual characters?
 var postSearch = function () {
-  //parse only returns the value, and there is not key
-  //how do I make the citystorestr as an array?
-
+  //this doesn't work as currently set
   var cityStoreStr = [];
-  var cityHist = JSON.parse(localStorage.getItem('history')) || [];
+  var cityHist = JSON.parse(localStorage.getItem('history'));
   console.log(cityHist);
   for (var i = 0; i < cityHist.length; i++) {
     console.log("In first loop of postSearch");
@@ -166,21 +163,19 @@ var postSearch = function () {
     console.log("In second loop of postSearch");
     var searchIn = cityStoreStr[i];
     console.log(searchIn);
-    var city = searchIn.split(', ');
     document.getElementById(`btn${i}`).innerHTML = "";
-    document.getElementById(`btn${i}`).innerHTML = city[0];
+    document.getElementById(`btn${i}`).innerHTML = searchIn;
   }
 };
 
 $("#searchSubmit").click(function () {
   var searchIn = $("#searchCityState").val();
   console.log(searchIn);
-  var city = searchIn.split(', ');
   places(searchIn);
   localStorage.setItem("#searchCity", searchIn);
-  document.getElementById("searchCity").innerHTML = city[0];
-  mainWeather(city[0], city[1]);
-  calledWeather(city[0], city[1]);
+  document.getElementById("searchCity").innerHTML = searchIn;
+  mainWeather(searchIn);
+  calledWeather(searchIn);
 });
 
 // $("#btn0").click(postSearch());

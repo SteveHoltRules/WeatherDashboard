@@ -43,8 +43,8 @@ var mainWeather = function (city, state) {
               // console.log(data);
               var uvIndex = data.current.uvi;
               console.log(typeof uvIndex);
-              
-              if(uvIndex < 3.00) {
+
+              if (uvIndex < 3.00) {
                 $(".uvIndex").empty().addClass("uvIndex rounded bg-success").append(uvIndex);
               } else if (uvIndex < 6.00) {
                 $(".uvIndex").empty().addClass("uvIndex rounded bg-warning").append(uvIndex);
@@ -85,7 +85,7 @@ var calledWeather = function (city, state) {
           j = ((8 * i) + 4);
           // console.log("Select the array of weather");
           // console.log(j);
-          k= i+1;
+          k = i + 1;
           var wicon = data.list[j].weather[0].icon;
           // console.log("Weather Icon");
           // console.log(wicon);
@@ -116,15 +116,15 @@ var calledWeather = function (city, state) {
 var searchHistory = localStorage.getItem('#searchCity');
 console.log(searchHistory);
 
-var defOrLocal = function(){
+var defOrLocal = function () {
   console.log(searchHistory);
-  if (searchHistory){
+  if (searchHistory) {
     var city = searchHistory.split(', ');
     document.getElementById("searchCity").innerHTML = city[0];
     mainWeather(city[0], city[1]);
     calledWeather(...city);
     console.log("Search History Exists");
-  }else {
+  } else {
     mainWeather("Dallas", "Texas");
     calledWeather("Dallas", "Texas");
     document.getElementById("searchCity").innerHTML = "Dallas";
@@ -148,20 +148,32 @@ console.log(btnArray);
 var cityBtn = localStorage.setItem('history', btnArray);
 console.log(cityBtn);
 
-$("#searchSubmit").click(function () {
+//this is taking the history and should split the city and state and return the city to the button
+//Instead, this function is taking the JSON and treating every character as a item in the array. How can it be treated as a group on the parse
+//instead of individual characters?
+var postSearch = function () {
+  var cityStoreStr = JSON.parse(localStorage.getItem('history'));
+  console.log(cityStoreStr);
+  for (var i = 0; i < cityStoreStr.length; i++) {
+    console.log("in loop of postSearch");
+    var searchIn = cityStoreStr[i];
+    console.log(searchIn);
+    var city = searchIn.split(', ');
+    document.getElementById(`btn${i}`).innerHTML = city[0];
+  }
+};
+
+$("#searchSubmit").click(function() {
   var searchIn = $("#searchCityState").val();
   console.log(searchIn);
   var city = searchIn.split(', ');
   places(searchIn);
-  console.log(city[0]);
-  console.log(city[1]);
   localStorage.setItem("#searchCity", searchIn);
   document.getElementById("searchCity").innerHTML = city[0];
   mainWeather(city[0], city[1]);
-  calledWeather(city[0], city[1]);
+  calledWeather(city[0], city[1])
+  postSearch();
 });
-
-
 
 // $("#btnDallas").click(function () {
 //   document.getElementById("searchCity").innerHTML = "Dallas";

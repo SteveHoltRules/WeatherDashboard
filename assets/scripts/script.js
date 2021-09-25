@@ -57,7 +57,7 @@ var mainWeather = function (city) {
               }
               var mwicon = data.current.weather[0].icon;
               var iconApi = `http://openweathermap.org/img/wn/${mwicon}@2x.png`;
-              console.log(iconApi);
+              // console.log(iconApi);
               $("#mwicon").attr('src', iconApi);
             })
           }
@@ -77,11 +77,11 @@ var calledWeather = function (city) {
   var apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
 
   fetch(apiUrl).then(function (response) {
-    console.log("In fetch of calledWeather");
+    // console.log("In fetch of calledWeather");
     if (response.ok) {
       response.json().then(function (data) {
         for (var i = 0; i < 5; i++) {
-          console.log("In loop of calledWeather");
+          // console.log("In loop of calledWeather");
           j = ((8 * i) + 4);
           // console.log("Select the array of weather");
           // console.log(j);
@@ -133,15 +133,21 @@ var defOrLocal = function () {
 
 defOrLocal();
 
-var btnArray;
+var btnArray = [];
 //I am storing the array into the local storage, but the array cannot be returned
 //because it is not the right type. I have to store a string, and then retrieve the string
 
+//I have clear the local storage, but now I can't seem to put it back together.
 var places = function (city) {
-  console.log("in places")
+  localStorage.setItem('history','');
+
+  // console.log("in places")
+
   let savedCity = JSON.stringify(city);
-  btnArray.append(savedCity);
-  console.log(btnArray);
+  btnArray.push(savedCity);
+
+  // console.log(btnArray);
+
   localStorage.setItem('history', btnArray);
 }
 
@@ -149,11 +155,18 @@ console.log(btnArray);
 
 // var cityBtn = localStorage.setItem('history', btnArray);
 
+const buttonPress = 0;
+
 var postSearch = function () {
-  //this doesn't work as currently set
+  //the purpose of this function is to post the latest search into the next button 
+  //The iterator is in the submitsearch button function
+  console.log("Button Press");
+  console.log(buttonPress);
+  
   var cityStoreStr = [];
   var cityHist = JSON.parse(localStorage.getItem('history'));
   console.log(cityHist);
+
   for (var i = 0; i < cityHist.length; i++) {
     console.log("In first loop of postSearch");
     cityStoreStr.push(cityHist[i]);
@@ -168,17 +181,25 @@ var postSearch = function () {
   }
 };
 
+//I need an iterator to cycle through the button clicks so that the names will be added to the buttons. Can I get one working?
+
 $("#searchSubmit").click(function () {
+  //sets the weather dashboard
   var searchIn = $("#searchCityState").val();
-  console.log(searchIn);
-  places(searchIn);
+
+  // console.log(searchIn);
+
   localStorage.setItem("#searchCity", searchIn);
   document.getElementById("searchCity").innerHTML = searchIn;
   mainWeather(searchIn);
   calledWeather(searchIn);
+
+  //Setting the places function as a response with the submitsearch function
+  places(searchIn);
+  buttonPress += 1;
 });
 
-// $("#btn0").click(postSearch());
+$("#btn0").click(postSearch());
 
 $("#btn1").click(function () {
   document.getElementById("searchCity").innerHTML = "El Paso";

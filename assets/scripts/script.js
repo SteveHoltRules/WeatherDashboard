@@ -97,9 +97,10 @@ var calledWeather = function (city) {
       // console.log("In fetch of calledWeather");
       if (response.ok) {
         response.json().then(function (data) {
+          console.log(data);
           for (var i = 0; i < 5; i++) {
             // console.log("In loop of calledWeather");
-            j = 8 * i + 4;
+            j = 8 * i + 2;
             // console.log("Select the array of weather");
             // console.log(j);
             k = i + 1;
@@ -125,7 +126,6 @@ var calledWeather = function (city) {
       }
     })
     .catch(function (error) {
-      //notice this catch getting changed out to the end of the .then()
       alert("Unable to connect to Open Weather");
     });
 };
@@ -135,13 +135,12 @@ var searchHistory = localStorage.getItem("#searchCity");
 
 //This function defines if there is a present local storage search
 var defOrLocal = function () {
-  // console.log(searchHistory);
   if (searchHistory) {
     var city = searchHistory;
     document.getElementById("searchCity").innerHTML = city;
     mainWeather(city);
     calledWeather(city);
-    // console.log("Search History Exists");
+
   } else {
     mainWeather("Dallas");
     calledWeather("Dallas");
@@ -156,8 +155,6 @@ $("#searchSubmit").click(function () {
   //sets the weather dashboard
   var searchIn = $("#searchCityState").val();
 
-  // console.log(searchIn);
-
   localStorage.setItem("#searchCity", searchIn);
   document.getElementById("searchCity").innerHTML = searchIn;
   mainWeather(searchIn);
@@ -165,24 +162,20 @@ $("#searchSubmit").click(function () {
 
   if (buttonPress <= 4) {
     buttonPress += 1;
-    // console.log("buttonPress");
-    // console.log(buttonPress);
     postSearch(searchIn);
     return buttonPress;
+
   } else {
     console.log("In greater than 4");
     buttonPress = 0;
-    // console.log("buttonPress");
-    // console.log(buttonPress);
     postSearch(searchIn);
     return buttonPress;
   }
 });
 
 let buttonPress = -1;
-//How do I get the postSearch to run?
 
-//This function is to post the latest search into the next button
+//This function is to post the latest search into the next button and set the local storage
 var postSearch = function (city) {
   
   //The iterator is in the submitsearch button function
@@ -194,11 +187,11 @@ var postSearch = function (city) {
   document.getElementById(`btn${buttonPress}`).innerHTML = `${city}`;
 
   //Defining Local Storage
-
   localStorage.setItem(`history${buttonPress}`, city);
 };
 
 //Function defines the buttons if there is a local storage variables
+//future improvement - make a way to loop through the cities to get the local storage and then set the btns in a loop
 var defBtn = function () {
   var btnHistory = 0;
   
@@ -230,19 +223,19 @@ var defBtn = function () {
 defBtn();
 
 //These functions run after the recent search results override the default buttons 
+//future improvement - consolidate the if functions into a single function that is called by each button
 $("#btn0").click(function () {
-  console.log("In Button 0");
+  // console.log("In Button 0");
 
-  console.log("City");
   var city = localStorage.getItem("history0");
   if (!city) {
     city = document.getElementById("btn0").innerHTML;
-    console.log(city);
+    // console.log(city);
     document.getElementById("searchCity").innerHTML = city;
     mainWeather(city);
     calledWeather(city);
   } else {
-    console.log(city);
+    // console.log(city);
     document.getElementById("searchCity").innerHTML = city;
     mainWeather(city);
     calledWeather(city);
@@ -250,18 +243,18 @@ $("#btn0").click(function () {
 });
 
 $("#btn1").click(function () {
-  console.log("In Button 1");
+  // console.log("In Button 1");
 
   console.log("City");
   var city = localStorage.getItem("history1");
   if (!city) {
     var defcity = document.getElementById("btn1").innerHTML;
-    console.log(defcity);
+    // console.log(defcity);
     document.getElementById("searchCity").innerHTML = defcity;
     mainWeather(defcity);
     calledWeather(defcity);
   } else {
-    console.log(city);
+    // console.log(city);
     document.getElementById("searchCity").innerHTML = city;
     mainWeather(city);
     calledWeather(city);
@@ -269,18 +262,16 @@ $("#btn1").click(function () {
 });
 
 $("#btn2").click(function () {
-  console.log("In Button 2");
-
-  console.log("City");
+  // console.log("In Button 2");
   var city = localStorage.getItem("history2");
   if (!city) {
     var defcity = document.getElementById("btn2").innerHTML;
-    console.log(defcity);
+    // console.log(defcity);
     document.getElementById("searchCity").innerHTML = defcity;
     mainWeather(defcity);
     calledWeather(defcity);
   } else {
-    console.log(city);
+    // console.log(city);
     document.getElementById("searchCity").innerHTML = city;
     mainWeather(city);
     calledWeather(city);
@@ -288,18 +279,16 @@ $("#btn2").click(function () {
 });
 
 $("#btn3").click(function () {
-  console.log("In Button 3");
+  // console.log("In Button 3");
 
-  console.log("City");
   var city = localStorage.getItem("history3");
   if (!city) {
     var defcity = document.getElementById("btn3").innerHTML;
-    console.log(defcity);
+    // console.log(defcity);
     document.getElementById("searchCity").innerHTML = defcity;
     mainWeather(defcity);
     calledWeather(defcity);
   } else {
-    console.log(city);
     document.getElementById("searchCity").innerHTML = city;
     mainWeather(city);
     calledWeather(city);
@@ -307,18 +296,17 @@ $("#btn3").click(function () {
 });
 
 $("#btn4").click(function () {
-  console.log("In Button 4");
+  // console.log("In Button 4");
 
-  console.log("City");
   var city = localStorage.getItem("history4");
   if (!city) {
     var defcity = document.getElementById("btn4").innerHTML;
-    console.log(defcity);
+    // console.log(defcity);
     document.getElementById("searchCity").innerHTML = defcity;
     mainWeather(defcity);
     calledWeather(defcity);
   } else {
-    console.log(city);
+    // console.log(city);
     document.getElementById("searchCity").innerHTML = city;
     mainWeather(city);
     calledWeather(city);

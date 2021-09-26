@@ -16,9 +16,11 @@ During this project I learned more about the details of arranging a bootstrap fi
 12. Make the static links function
 13. Use localstorage to set and get data
 14. Update the search to dynamically change the buttons
-15. Use the local storage data to run searches
+15. Add UV color coding
+16. Add Icon to main and center the formatting
+17. Save searches to local storage
+15. Post searches to button menu
 16. Persist local storage button information on reload
- 
+
 ### Items Left to Address
-1. Refactor functions
 

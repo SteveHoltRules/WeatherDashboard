@@ -23,11 +23,7 @@ During this project I learned more about the details of arranging a bootstrap fi
 16. Persist local storage button information on reload
 
 ### Items Left to Address
-<<<<<<< .merge_file_a09320
-1. Use more local storage functionality - Allow the user to select the top 5 cities of keep on the daskboard.
-2. Set the Forecast API to use a time of day (noon for example) instead of pre-selecting the data-streams (in this case, the 4 stream, and every 8 after that for the same time period the following day). 
+1. Refactor Functions
 
-![image](https://user-images.githubusercontent.com/78341753/130368531-bd2c18f3-bf66-4a6a-9ff2-f5d80b0001a9.png)
-=======
+![image](https://user-images.githubusercontent.com/78341753/134790908-468d5efb-7d99-43f3-82ce-a98146ac916a.png)
 
->>>>>>> .merge_file_a19376

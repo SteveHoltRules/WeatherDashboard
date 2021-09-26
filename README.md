@@ -10,15 +10,15 @@ During this project I learned more about the details of arranging a bootstrap fi
 6. API Call for tile icons
 7. API Call for forecast
 8. Clear the string after clicking the function
-9. Separate the search function using a comma and a space
-  *Find the space and use the split method. pass the remainder to the city
-10. Clear out the prior information
-11. Pass the city and the state into the api
-12. Clean-up and display more information on the 5 day forecast
-13. Make the static links function 
+9. Clear out the prior search information
+10. Pass the city and the state into the api
+11. Clean-up and display more information on the 5 day forecast
+12. Make the static links function
+13. Use localstorage to set and get data
+14. Update the search to dynamically change the buttons
+15. Use the local storage data to run searches
+16. Persist local storage button information on reload
  
 ### Items Left to Address
-1. Use more local storage functionality - Allow the user to select the top 5 cities to keep on the dashboard.
-2. This city api call is not working as it should. The parse function doesn't like the search method to use the space and comma. Due to this, the API call will have to be changed, plus the rework of the search functions, and then retry the local storage functionality. 
-3. Set the Forecast API to use a time of day (noon for example) instead of pre-selecting the data-streams (in this case, the 4 stream, and every 8 after that for the same time period the following day). 
+1. Refactor functions
 

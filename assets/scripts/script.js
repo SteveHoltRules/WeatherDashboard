@@ -133,6 +133,7 @@ var calledWeather = function (city) {
 var searchHistory = localStorage.getItem("#searchCity");
 // console.log(searchHistory);
 
+//This function defines if there is a present local storage search
 var defOrLocal = function () {
   // console.log(searchHistory);
   if (searchHistory) {
@@ -150,6 +151,7 @@ var defOrLocal = function () {
 
 defOrLocal();
 
+//This triggers the search based on the user input and returns both the header level info and 5 day forecast
 $("#searchSubmit").click(function () {
   //sets the weather dashboard
   var searchIn = $("#searchCityState").val();
@@ -161,20 +163,17 @@ $("#searchSubmit").click(function () {
   mainWeather(searchIn);
   calledWeather(searchIn);
 
-  //Button press is not sending outside the function - functions can either return a value, or call a function,
-  //but the iteration is not working inside another function
-
   if (buttonPress <= 4) {
     buttonPress += 1;
-    console.log("buttonPress");
-    console.log(buttonPress);
+    // console.log("buttonPress");
+    // console.log(buttonPress);
     postSearch(searchIn);
     return buttonPress;
   } else {
     console.log("In greater than 4");
     buttonPress = 0;
-    console.log("buttonPress");
-    console.log(buttonPress);
+    // console.log("buttonPress");
+    // console.log(buttonPress);
     postSearch(searchIn);
     return buttonPress;
   }
@@ -183,15 +182,15 @@ $("#searchSubmit").click(function () {
 let buttonPress = -1;
 //How do I get the postSearch to run?
 
+//This function is to post the latest search into the next button
 var postSearch = function (city) {
-  //the purpose of this function is to post the latest search into the next button
+  
   //The iterator is in the submitsearch button function
-  console.log("Button Press");
-  console.log(buttonPress);
-  console.log(`btn${buttonPress}`);
-  console.log(city);
-  //Now assign search in to the top button up to 5 searches, after 5 start over...
-  //This is using the DOM, but not local storage
+  // console.log("Button Press");
+  // console.log(buttonPress);
+  // console.log(`btn${buttonPress}`);
+  // console.log(city);
+
   document.getElementById(`btn${buttonPress}`).innerHTML = `${city}`;
 
   //Defining Local Storage
@@ -199,6 +198,38 @@ var postSearch = function (city) {
   localStorage.setItem(`history${buttonPress}`, city);
 };
 
+//Function defines the buttons if there is a local storage variables
+var defBtn = function () {
+  var btnHistory = 0;
+  
+  var city0 = localStorage.getItem("history0");
+  var city1 = localStorage.getItem("history1");
+  var city2 = localStorage.getItem("history2");
+  var city3 = localStorage.getItem("history3");
+  var city4 = localStorage.getItem("history4");
+  if (!city0) {
+    return "";
+  } else if (!city1) {
+    btnHistory = +1;
+  } else if (!city2) {
+    btnHistory = +2;
+  } else if (!city3) {
+    btnHistory = +3;
+  } else if (!city4) {
+    btnHistory = +4;
+  } else {
+    btnHistory = +5
+  }
+
+  for (var i = 0; i < btnHistory; i++) {
+    var value = localStorage.getItem(`history${i}`);
+    document.getElementById(`btn${i}`).innerHTML = value;
+  }
+};
+
+defBtn();
+
+//These functions run after the recent search results override the default buttons 
 $("#btn0").click(function () {
   console.log("In Button 0");
 
@@ -293,14 +324,3 @@ $("#btn4").click(function () {
     calledWeather(city);
   }
 });
-
-//When I load the page, how do I set the page based on local storage instead of default values?
-
-// $("#btnCorpus").click(function () {
-//   document.getElementById("searchCity").innerHTML = "Corpus";
-//   mainWeather("Corpus Christi", "Texas");
-//   calledWeather("Corpus Christi", "Texas");
-// });
-
-//I want to use cityHist when I am first setting up the page
-// var cityHist = JSON.parse(localStorage.getItem("history0"));

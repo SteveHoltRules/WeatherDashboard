@@ -10,15 +10,24 @@ During this project I learned more about the details of arranging a bootstrap fi
 6. API Call for tile icons
 7. API Call for forecast
 8. Clear the string after clicking the function
-9. Separate the search function using a comma and a space
-  *Find the space and use the split method. pass the remainder to the city
-10. Clear out the prior information
-11. Pass the city and the state into the api
-12. Clean-up and display more information on the 5 day forecast
-13. Make the static links function 
- 
+9. Clear out the prior search information
+10. Pass the city and the state into the api
+11. Clean-up and display more information on the 5 day forecast
+12. Make the static links function
+13. Use localstorage to set and get data
+14. Update the search to dynamically change the buttons
+15. Add UV color coding
+16. Add Icon to main and center the formatting
+17. Save searches to local storage
+15. Post searches to button menu
+16. Persist local storage button information on reload
+
 ### Items Left to Address
+<<<<<<< .merge_file_a09320
 1. Use more local storage functionality - Allow the user to select the top 5 cities of keep on the daskboard.
 2. Set the Forecast API to use a time of day (noon for example) instead of pre-selecting the data-streams (in this case, the 4 stream, and every 8 after that for the same time period the following day). 
 
 ![image](https://user-images.githubusercontent.com/78341753/130368531-bd2c18f3-bf66-4a6a-9ff2-f5d80b0001a9.png)
+=======
+
+>>>>>>> .merge_file_a19376

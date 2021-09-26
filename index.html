@@ -110,25 +110,25 @@
           </div>
           <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-              <input type="search" class="form-control mb-3" id="searchCityState" placeholder="City, State"
+              <input type="search" class="form-control mb-3" id="searchCityState" placeholder="City"
                 aria-label="Search">
               <button class="form-control btn btn-success my-2 my-sm-0" id="searchSubmit" type="button">Search</button>
             </div>
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 mt-5">
               <li class="btn btn-primary form-control mb-3 text-light">
-                <a id="btnDallas"><span>Dallas</span></a>
+                <a id="btn0">Dallas</a>
               </li>
               <li class="btn btn-primary form-control mb-3 text-light">
-                <a id="btnElPaso"><span>El Paso</span></a>
+                <a id="btn1">El Paso</a>
               </li>
               <li class="btn btn-primary form-control mb-3 text-light">
-                <a id="btnAustin"><span>Austin</span></a>
+                <a id="btn2">Austin</a>
               </li>
               <li class="btn btn-primary form-control mb-3 text-light">
-                <a id="btnMarfa"><span>Marfa</span></a>
+                <a id="btn3">Marfa</a>
               </li>
               <li class="btn btn-primary form-control mb-3 text-light">
-                <a id="btnCorpus"><span>Corpus Christi</span></a>
+                <a id="btn4">Corpus Christi</a>
               </li>
             </form>
           </ul>
@@ -152,7 +152,12 @@
 
         <!-- Dashboard Header -->
         <div class="pricing-header mx-auto">
-          <h1 class="display-4 fw-bold text-center" id="searchCity" type="text">Dallas</h1>
+          <div class="d-flex">
+            <div class="d-inline-flex mx-auto">
+              <img id="mwicon"/>
+              <h1 class="d-flex align-items-center" id="searchCity" type="text"></h1>
+            </div>
+          </div>
           <ul>
             <li class="list-group-item pl-5">Today's Date: <span class="tdate"></span></li>
             <li class="list-group-item pl-5">Temp: <span class="temp0"></span></li>

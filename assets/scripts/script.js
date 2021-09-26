@@ -17,7 +17,7 @@ var weatherboardDates = function () {
 
 weatherboardDates();
 
-const mainWeather = function (city) {
+var mainWeather = function (city) {
   var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=cc7ed6f786635293096d197e16858884`;
   // console.log(apiUrl);
   fetch(apiUrl)
@@ -142,8 +142,8 @@ var defOrLocal = function () {
     calledWeather(city);
     // console.log("Search History Exists");
   } else {
-    mainWeather("Dallas", "Texas");
-    calledWeather("Dallas", "Texas");
+    mainWeather("Dallas");
+    calledWeather("Dallas");
     document.getElementById("searchCity").innerHTML = "Dallas";
   }
 };
@@ -164,15 +164,15 @@ $("#searchSubmit").click(function () {
   //Button press is not sending outside the function - functions can either return a value, or call a function,
   //but the iteration is not working inside another function
 
-  if (buttonPress >= 4) {
-    console.log("In greater than 4");
-    buttonPress = 0;
+  if (buttonPress <= 4) {
+    buttonPress += 1;
     console.log("buttonPress");
     console.log(buttonPress);
     postSearch(searchIn);
     return buttonPress;
   } else {
-    buttonPress += 1;
+    console.log("In greater than 4");
+    buttonPress = 0;
     console.log("buttonPress");
     console.log(buttonPress);
     postSearch(searchIn);
@@ -202,44 +202,99 @@ var postSearch = function (city) {
 $("#btn0").click(function () {
   console.log("In Button 0");
 
-  console.log("city");
-  var city = document.getElementById("btn0").innerHTML;
-  console.log(city);
-
-  console.log("text");
-  let text = localStorage.getItem("history0");
-  console.log(text);
-
-  console.log("obj");
-  let obj = JSON.parse(text);
-  console.log(obj);
-
-  console.log(obj.name);
-  mainWeather(obj.name);
-  calledWeather(obj.name);
-  
+  console.log("City");
+  var city = localStorage.getItem("history0");
+  if (!city) {
+    city = document.getElementById("btn0").innerHTML;
+    console.log(city);
+    document.getElementById("searchCity").innerHTML = city;
+    mainWeather(city);
+    calledWeather(city);
+  } else {
+    console.log(city);
+    document.getElementById("searchCity").innerHTML = city;
+    mainWeather(city);
+    calledWeather(city);
+  }
 });
 
-$("btn1").click(function () {
-  var city = document.getElementById("btn1").innerHTML;
+$("#btn1").click(function () {
+  console.log("In Button 1");
 
-  mainWeather(city);
-  calledWeather(city);
+  console.log("City");
+  var city = localStorage.getItem("history1");
+  if (!city) {
+    var defcity = document.getElementById("btn1").innerHTML;
+    console.log(defcity);
+    document.getElementById("searchCity").innerHTML = defcity;
+    mainWeather(defcity);
+    calledWeather(defcity);
+  } else {
+    console.log(city);
+    document.getElementById("searchCity").innerHTML = city;
+    mainWeather(city);
+    calledWeather(city);
+  }
 });
 
-$("btn2").click(function () {
-  var city = document.getElementById("btn1").innerHTML;
+$("#btn2").click(function () {
+  console.log("In Button 2");
 
-  mainWeather(city);
-  calledWeather(city);
+  console.log("City");
+  var city = localStorage.getItem("history2");
+  if (!city) {
+    var defcity = document.getElementById("btn2").innerHTML;
+    console.log(defcity);
+    document.getElementById("searchCity").innerHTML = defcity;
+    mainWeather(defcity);
+    calledWeather(defcity);
+  } else {
+    console.log(city);
+    document.getElementById("searchCity").innerHTML = city;
+    mainWeather(city);
+    calledWeather(city);
+  }
 });
 
-$("btn3").click(function () {
-  var city = document.getElementById("btn1").innerHTML;
+$("#btn3").click(function () {
+  console.log("In Button 3");
 
-  mainWeather(city);
-  calledWeather(city);
+  console.log("City");
+  var city = localStorage.getItem("history3");
+  if (!city) {
+    var defcity = document.getElementById("btn3").innerHTML;
+    console.log(defcity);
+    document.getElementById("searchCity").innerHTML = defcity;
+    mainWeather(defcity);
+    calledWeather(defcity);
+  } else {
+    console.log(city);
+    document.getElementById("searchCity").innerHTML = city;
+    mainWeather(city);
+    calledWeather(city);
+  }
 });
+
+$("#btn4").click(function () {
+  console.log("In Button 4");
+
+  console.log("City");
+  var city = localStorage.getItem("history4");
+  if (!city) {
+    var defcity = document.getElementById("btn4").innerHTML;
+    console.log(defcity);
+    document.getElementById("searchCity").innerHTML = defcity;
+    mainWeather(defcity);
+    calledWeather(defcity);
+  } else {
+    console.log(city);
+    document.getElementById("searchCity").innerHTML = city;
+    mainWeather(city);
+    calledWeather(city);
+  }
+});
+
+//When I load the page, how do I set the page based on local storage instead of default values?
 
 // $("#btnCorpus").click(function () {
 //   document.getElementById("searchCity").innerHTML = "Corpus";
